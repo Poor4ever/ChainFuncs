@@ -29,10 +29,10 @@ setchain <chai name>
 # View chain details
 showchain
 
-#Look up the address on the debank(Only Macs can use this function)
+#Look up the address on the debank(Only available for Mac)
 debank <ens or address>
 
-#Look up the address on the blockchain explorer(Only Macs can use this function)
+#Look up the address on the blockchain explorer(Only available for Mac)
 explore <ens or address or tx>
 
 # Decimal to Hex
@@ -70,8 +70,6 @@ interface
 
 #...
 ```
-
-
 
 ## Example
 
