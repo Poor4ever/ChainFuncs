@@ -13,6 +13,8 @@
 # includes RPC links and Blockchain Explore links, etc.
 source "$(dirname "$0")/basicinfo.sh"
 
+# =========== variables ===========
+#IMPLEMENTATION_SLOT="0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
 
 # =========== utils ===========
 chainlist() {
@@ -54,6 +56,15 @@ check_address() {
         elif [[ ${#1} -eq 66 ]]; then
             tx=$1
         fi
+    fi
+}
+
+check_upgradeable() {
+    # impl_address=$(cast --abi-decode "implementation()(address)" $(cast storage $1 $IMPLEMENTATION_SLOT))
+    zero_address=$(cast --address-zero)
+    impl_address=$(cast impl $1)
+    if [[ $impl_address == $zero_address ]]; then
+        impl_address=$1
     fi
 }
 
@@ -129,6 +140,13 @@ allf() {
     done
 }
 
+#Get the source code of a contract from Etherscan and save to local
+downloadsoure() {
+  check_upgradeable $1
+  contract_name=$(curl -s --location --request GET "https://api.etherscan.io/api?module=contract&action=getsourcecode&address=${impl_address}&apikey=${ETHERSCAN_API_KEY}" | jq -r '.result[0].ContractName')
+  cast etherscan-source $impl_address -d $contract_name
+}
+
 
 # Get the bytecode of a contract
 bytecode() {
@@ -158,7 +176,6 @@ chainid() {
 gas() {
    cast gas-price
 }
-
 
 
 # automatically configure mainnet when opening a new shell, if ETH_RPC_URL is not already configured
