@@ -2,9 +2,15 @@
 
 a simple script,simplify some cli operations.
 
-Inspired by: https://gist.github.com/jameswenzel/86d2e1a524ffc66eb424770f74165a49
+Inspired by: 
 
-Modifications and additions based on this script.
+https://gist.github.com/jameswenzel/86d2e1a524ffc66eb424770f74165a49  
+
+https://github.com/zobront/quickpoc/blob/main/quickpoc
+
+https://github.com/hananbeer/1regex4bytes/tree/main
+
+
 
 ## How to use it
 
@@ -54,19 +60,22 @@ qdecimals
 qbalance
 
 # Gets the function signature and corresponding function from the not verify contract
-allf
+allf <contract address>
 
 # Get the bytecode of a contract
 bytecode <contract address>
 
 # Get the selector for a functio, e.g. `fsig "transfer(address, uint256)"`
-fsig
+fsig 
 
-#Get the function signatures, e.g. `4byte 0xa9059cbb`
-4byte
+#Get the function signatures for the given selector , e.g. `4byte 0xa9059cbb`
+4byte <function selector>
 
 #Generate a Solidity interface from a given ABI `interface <contract address>`
-interface
+interface <contract address>
+
+#Get the source code of a contract from Etherscan and save to local
+downloadsoure <contract address>
 
 #...
 ```
