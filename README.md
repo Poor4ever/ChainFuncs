@@ -41,6 +41,9 @@ debank <ens or address>
 #Look up the address on the blockchain explorer(Only available for Mac)
 explore <ens or address or tx>
 
+# Analyze transaction in Phalcon(Only available for Mac)
+phalcon <tx>
+
 # Decimal to Hex
 d2h
 

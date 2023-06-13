@@ -32,3 +32,15 @@ declare -A ETHERSCAN_API_KEYS=(
   ["fantom"]='<YOUR_API_KEY>'
   ["gnosis"]='<YOUR_API_KEY>'
 )
+
+declare -A CHAIN_IDS=(
+  ['1']="eth"
+  ['56']="bsc"
+  ['137']="polygon"
+  ['42161']="arbitrum"
+  ['10']="optimism"
+  ['43114']="avax"
+  ['250']="ftm"
+  ['100']="gnosis"
+  ['25']="cronos"
+)

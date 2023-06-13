@@ -88,6 +88,16 @@ explore() {
     fi
 }
 
+phalcon() {
+    chain_id=$(curl -s 'https://explorer.phalcon.xyz/api/v1/tx/search' \
+                -H 'content-type: application/json;charset=utf-8' \
+                --data-raw "{\"txnHash\":\"${1}\"}" \
+                | jq -r ".txns[0].chainID"
+            )
+    link="https://explorer.phalcon.xyz/tx/${CHAIN_IDS[$chain_id]}/$1"
+    open -n $link
+}
+
 # =========== cast ===========
 
 # Decimal to Hex
@@ -146,7 +156,6 @@ downloadsoure() {
   contract_name=$(curl -s --location --request GET "https://api.etherscan.io/api?module=contract&action=getsourcecode&address=${impl_address}&apikey=${ETHERSCAN_API_KEY}" | jq -r '.result[0].ContractName')
   cast etherscan-source $impl_address -d $contract_name
 }
-
 
 # Get the bytecode of a contract
 bytecode() {
