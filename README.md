@@ -44,6 +44,9 @@ explore <ens or address or tx>
 # Analyze transaction in Phalcon(Only available for Mac)
 phalcon <tx>
 
+# Analyze transaction in Openchain(Only available for Mac)
+openchain <tx>
+
 # Decimal to Hex
 d2h
 
@@ -57,10 +60,10 @@ w2e
 e2w
 
 # Get token decimals
-qdecimals
+qdecimals <token contract address>
 
 # Query for the specified address token balance, e.g. `qbalance tokenAddress queryAddress`
-qbalance
+qbalance <ens or address>
 
 # Gets the function signature and corresponding function from the not verify contract
 allf <contract address>
@@ -69,7 +72,7 @@ allf <contract address>
 bytecode <contract address>
 
 # Get the selector for a functio, e.g. `fsig "transfer(address, uint256)"`
-fsig 
+fsig() 
 
 #Get the function signatures for the given selector , e.g. `4byte 0xa9059cbb`
 4byte <function selector>

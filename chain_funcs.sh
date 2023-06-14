@@ -68,6 +68,14 @@ check_upgradeable() {
     fi
 }
 
+get_tx_chainid() {
+    chain_id=$(curl -s 'https://explorer.phalcon.xyz/api/v1/tx/search' \
+                -H 'content-type: application/json;charset=utf-8' \
+                --data-raw "{\"txnHash\":\"${1}\"}" \
+                | jq -r ".txns[0].chainID"
+            )   
+}
+
 # =========== visitweb ===========
 
 debank() {
@@ -89,12 +97,14 @@ explore() {
 }
 
 phalcon() {
-    chain_id=$(curl -s 'https://explorer.phalcon.xyz/api/v1/tx/search' \
-                -H 'content-type: application/json;charset=utf-8' \
-                --data-raw "{\"txnHash\":\"${1}\"}" \
-                | jq -r ".txns[0].chainID"
-            )
-    link="https://explorer.phalcon.xyz/tx/${CHAIN_IDS[$chain_id]}/$1"
+    get_tx_chainid $1
+    link="https://explorer.phalcon.xyz/tx/${PHALCON_CHAIN_ID_URL_PATHS[$chain_id]}/$1"
+    open -n $link
+}
+
+openchain() {
+    get_tx_chainid $1
+    link="https://openchain.xyz/trace/${OPENCHAIN_CHAIN_ID_URL_PATHS[$chain_id]}/$1"
     open -n $link
 }
 

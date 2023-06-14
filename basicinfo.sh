@@ -33,7 +33,7 @@ declare -A ETHERSCAN_API_KEYS=(
   ["gnosis"]='<YOUR_API_KEY>'
 )
 
-declare -A CHAIN_IDS=(
+declare -A PHALCON_CHAIN_ID_URL_PATHS=(
   ['1']="eth"
   ['56']="bsc"
   ['137']="polygon"
@@ -44,3 +44,14 @@ declare -A CHAIN_IDS=(
   ['100']="gnosis"
   ['25']="cronos"
 )
+
+declare -A OPENCHAIN_CHAIN_ID_URL_PATHS=(
+  ['1']="ethereum"
+  ['56']="binance"
+  ['137']="polygon"
+  ['42161']="arbitrum"
+  ['10']="optimism"
+  ['43114']="avalanche"
+  ['250']="fantom"
+)
+
